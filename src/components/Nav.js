@@ -1,18 +1,49 @@
 import React from 'react';
-import { Link , NavLink } from "react-router-dom";
-const Nav = () =>{
-    return(
-        <nav className="nav-wrapper blue accent-4">
-            <div className="container">
-                <a href="/" className="brand-logo">SchoolSystem</a>
-            </div>
-            <ul className="right">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><Link to="/signup">Signup</Link></li>
-                <li><Link to="/login">Login</Link></li>
-            </ul>
-        </nav>
-    )
-}
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import {Link} from "react-router-dom"
+import red from '@material-ui/core/colors/red';
 
-export default Nav
+
+
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+
+}));
+
+export default function ButtonAppBar() {
+  const classes = useStyles();
+  const primary = red[500]; // #F44336
+
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          
+         <Link to="/login"><Button >Login</Button> </Link>
+         <Link to="/signup"> <Button>Sigup</Button> </Link>
+          <Link to="/home"> <Button >Home</Button> </Link>
+          <Link to="/addteacher"> <Button >Addteacher</Button> </Link>
+          <Link to="/addstudentaffairs"> <Button >Addstd</Button> </Link>
+          <Link to="/addcontrolemp"> <Button >Addcontrolemp</Button> </Link>
+          <Link to="/addworkersaffair"> <Button >Addworkersaffair</Button> </Link>
+
+        
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
