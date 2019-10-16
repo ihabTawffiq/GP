@@ -1,55 +1,73 @@
-import React,{Component} from "react"
 
-// const ancr = document.getElementById("btn")
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+const useStyles = makeStyles({
+    btn: {
+      border: 0,
+      borderRadius: 3,
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      color: 'white',
+      height: 48,
+      padding: '0 30px',
+      position: "absolute",
+      left: '43%',
+      bottom: '42%'
+    },
+    txt:{
+        width: '35%',
+        position: "absolute",
+        left: '30%',
+    },
+    txt2:{
+        width: '35%',
+        position: "absolute",
+        left: '30%',
+        top : "30%"   
+    },
+    cont:{
+        border:'2px solid black',
 
-class Login extends Component{
- 
-    state = {
-      email :'',
-      password: ''
     }
-  handlechange=(e)=>{
-    this.setState({
-      [e.target.id]:e.target.value
-    })
-  }
-  handlesubmit = (e) =>{
-      e.preventDefault()
-       if(this.state.email.includes("@manger")){
-         
-        e.preventDefault()
-       console.log("true")
-      //  ancr.setAttribute("href" ,"/about")
-      window.location.assign('/manger')
-    }else if(this.state.email.includes("@student")){
-         e.preventDefault()
-           console.log("false")
-           window.location.assign('/student')
-          }
-          else{
-            alert("Please Create an account !")
-            window.location.assign('/signup')
 
-          }
-
-  }
-
+  });
   
-    render(){
-    return(
-       <div className="container">
-        <h4 className="center">
-          <h2 className="center">Login</h2>
-        </h4>
-        <form onSubmit={this.handlesubmit}>
-        <input onChange={this.handlechange} id="email" type="email" placeholder="Email"/>
-        <input onChange={this.handlechange} id="password" type="password" placeholder="Password"/>
+  
+export default function Login () {
+    const classes = useStyles();
+  
 
-        <button className="waves-effect waves-light btn-large blue accent-4 center-align">Submit</button>
-        {/* <a href="/" className="btn" id="btn" role="button">Submit</a> */}
-        </form>
-       </div>
-    )
-}
-}
-export default Login
+    return (
+        
+        <React.Fragment>
+
+            <TextField
+              className={classes.txt2}
+              placeholder="Enter Your Email"
+              label="Email"
+              margin="normal"
+              type="email"
+              
+            />
+          
+
+            <TextField
+            className={classes.txt}
+              placeholder="Enter Your Password"
+              label="Password"
+              margin="normal"
+              type="password"
+            />
+       
+          
+            
+            <Button className={classes.btn}
+              color="primary"
+              variant="contained"
+            >Continue</Button>
+        </React.Fragment>
+    );
+  }
+
+
