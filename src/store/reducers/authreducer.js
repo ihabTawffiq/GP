@@ -7,7 +7,7 @@ const authreducer = (state = initstate, action) => {
     case "SIGNUP_SUCCESS":
       return {
         ...state,
-        token: action.data.token,
+        token: action.res.token,
         signUp_err: null
       };
     case "SIGNUP_FAILED":

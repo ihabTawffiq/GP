@@ -1,59 +1,59 @@
-import React from "react";
+import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-const useStyles = makeStyles({
-  btn: {
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    position: "absolute",
-    left: "43%",
-    bottom: "42%"
-  },
-  txt: {
-    width: "35%",
-    position: "absolute",
-    left: "30%"
-  },
-  txt2: {
-    width: "35%",
-    position: "absolute",
-    left: "30%",
-    top: "30%"
-  },
-  cont: {
-    border: "2px solid black"
+import { connect } from "react-redux";
+import { LogIN } from "../store/actions/authaction";
+class Login extends Component {
+  state = {
+    email: "",
+    password: ""
+  };
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
+  handleclick = () => {
+this.props.Login(this.state)
+    // console.log(this.state);
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <TextField
+          placeholder="Enter Your Email"
+          label="Email"
+          margin="normal"
+          type="email"
+          id="email"
+          onChange={this.handleChange}
+        />
+
+        <TextField
+          placeholder="Enter Your Password"
+          label="Password"
+          margin="normal"
+          type="password"
+          id="password"
+          onChange={this.handleChange}
+        />
+
+        <Button onClick={this.handleclick} color="primary" variant="contained">
+          Continue
+        </Button>
+      </React.Fragment>
+    );
   }
-});
-
-export default function Login() {
-  const classes = useStyles();
-
-  return (
-    <React.Fragment>
-      <TextField
-        className={classes.txt2}
-        placeholder="Enter Your Email"
-        label="Email"
-        margin="normal"
-        type="email"
-      />
-
-      <TextField
-        className={classes.txt}
-        placeholder="Enter Your Password"
-        label="Password"
-        margin="normal"
-        type="password"
-      />
-
-      <Button className={classes.btn} color="primary" variant="contained">
-        Continue
-      </Button>
-    </React.Fragment>
-  );
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    Login: data => {
+      dispatch(LogIN(data));
+    }
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(Login);
