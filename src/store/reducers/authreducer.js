@@ -1,30 +1,20 @@
 const initstate = {
-  token: null
+  token: null,
+  signUp_err: null
 };
 
 const authreducer = (state = initstate, action) => {
   switch (action.type) {
-    case "SIGNUP_SUCCESS":
+    case "SIGNIN_SUCCESS":
       return {
         ...state,
         token: action.res.token,
         signUp_err: null
       };
-    case "SIGNUP_FAILED":
-      return {
-        ...state,
-        signUp_err: "err"
-      };
-    case "SIGNIN_SUCCESS":
-      return {
-        ...state,
-        token: action.data.token,
-        signUp_err: null
-      };
     case "SIGNIN_FAILED":
       return {
         ...state,
-        signUp_err: "err"
+        signUp_err: action.err
       };
     case "SIGNOUT":
       return {

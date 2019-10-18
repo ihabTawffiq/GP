@@ -5,7 +5,7 @@ import rootreducer from "./reducers/rootreducer";
 function saveToLocalStorage(state) {
   try {
     const serializeState = JSON.stringify(state);
-    localStorage.setItem("state", serializeState);
+    localStorage.setItem("state_project", serializeState);
   } catch (e) {
     console.log(e);
   }
@@ -13,7 +13,7 @@ function saveToLocalStorage(state) {
 
 function loadFormLocalStorage() {
   try {
-    const serializeState = localStorage.getItem("state");
+    const serializeState = localStorage.getItem("state_project");
     if (serializeState === null) return undefined;
     return JSON.parse(serializeState);
   } catch (e) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const LogIN = data => {
-  return (getstate, dispatch) => {
+  return (dispatch, getState) => {
     // console.log(data);
     axios
       .post("https://lit-peak-11555.herokuapp.com/LOGIN", data)
@@ -10,8 +10,17 @@ export const LogIN = data => {
         dispatch({ type: "SIGNIN_SUCCESS", res: res.data });
       })
       .catch(err => {
-        dispatch({ type: "SIGNUP_FAILED" });
+        console.log();
+        dispatch({ type: "SIGNIN_FAILED", err: err.response.data });
       });
+  };
+};
+
+export const LogOut = () => {
+  return (dispatch, getState) => {
+    // console.log(data);
+
+    dispatch({ type: "SIGNOUT" });
   };
 };
 
