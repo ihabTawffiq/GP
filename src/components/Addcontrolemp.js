@@ -1,148 +1,152 @@
-
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { Container } from '@material-ui/core';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import red from '@material-ui/core/colors/red';
-const primary = red[500]; // #F44336
-
-const useStyles = makeStyles({
-    root: {
-        display: 'flex',
-      },
-    btn: {
-      border: 0,
-      borderRadius: 3,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 48,
-      padding: '0 30px',
-      position: "absolute",
-      left: "40%",
-      bottom: '15%'
-    },
-    txt:{
-        width: 190,
-        position: "absolute",
-        left: "39%",
-        top : "65%"
-    },
-   
-    formControl:{
-        position: "absolute",
-        top:"8%",
-        left :'55%',
-        
-    },
-    formControl2:{
-        position: "absolute",
-        top:"48%",
-        left :'55%',
-        
-    },
-    cont:{
-        position : "absolute",
-        left : "35%"
-        
-    }
-
-  });
-  
-  
-export default function Addcontrolemp () {
-    const classes = useStyles();
-    const [value, setValue] = React.useState('female');
-    const [state, setState] = React.useState({
-        one: true,
-        two: false,
-        three: false,
-      });
-  const handleChange = event => {
-    setValue(event.target.value);
+import React, { Component } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { Container } from "@material-ui/core";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import red from "@material-ui/core/colors/red";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  // KeyboardTimePicker,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+import { addControlEmp } from "../store/actions/additionsActions";
+import { connect } from "react-redux";
+import { fromUnixTime } from "date-fns/esm";
+class Addcontrolemp extends Component {
+  state = {
+    first_name: "",
+    last_name: "",
+    gender: "",
+    birthdate: null,
+    identity: "",
+    address: "",
+    phonenumber: ""
   };
-  // const handleChange2 = name => event => {
-  //   setState({ ...state, [name]: event.target.checked });
-  // };
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
 
-//   const { one, two, three } = state;
+  handleChangeDate = e => {
+    console.log(e);
 
+    this.setState({
+      birthdate: e === "Invalid Date" ? null : e
+    });
+  };
+
+  handleChange2 = e => {
+    console.log(e.target);
+
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+  handleClick = e => {
+    e.preventDefault();
+    console.log(this.state);
+    this.props.addCEmp(this.state);
+  };
+  render() {
     return (
-        
-        <React.Fragment>
-            <div className={classes.cont}>
-            <TextField
-              placeholder="Enter Your Firstname"
-              label="Firstname"
-              margin="normal"
-              
-            />
-            <br />
-            <TextField
-             
-              placeholder="Enter Your Lastname"
-              label="Lastname"
-              margin="normal"
-            />
-            <br />
-              <TextField
-             
-             placeholder="Identity"
-             label="Identity"
-             margin="normal"
-             type="number"
-           />
-            <br />
-            <TextField
-          
-              placeholder="Enter Your Password"
-              label="Password"
-              margin="normal"
-            type="password"
-            />
-            <br/>
-            
-        
-            <TextField
-            placeholder="Birthday"
+      <React.Fragment>
+        <div>
+          <TextField
+            placeholder="Enter Your Firstname"
+            label="Firstname"
             margin="normal"
-            type="date"
+            id="first_name"
+            onChange={this.handleChange}
           />
-             <TextField
-            placeholder="Phonenumber"
-            label="Phonenumber"
+          <br />
+          <TextField
+            placeholder="Enter Your Lastname"
+            label="Lastname"
+            margin="normal"
+            id="last_name"
+            onChange={this.handleChange}
+          />
+          <br />
+          <TextField
+            placeholder="Identity"
+            label="Identity"
+            margin="normal"
             type="number"
+            id="identity"
+            onChange={this.handleChange}
           />
-             <TextField
-            placeholder="Address"
-            label="Address"
-            type="address"
+          <br />
+          <TextField
+            placeholder="Phone Number"
+            label="Phone Number"
+            margin="normal"
+            type="number"
+            id="phonenumber"
+            onChange={this.handleChange}
           />
-           <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Gender</FormLabel>
-        <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-          <FormControlLabel  value="female" control={<Radio color = "primary"/>} label="Female" />
-          <FormControlLabel value="male" control={<Radio color = "primary"/>} label="Male" />
-        
-        </RadioGroup>
-      </FormControl>
+          <br />
 
-            
-           </div>
-           <Button className={classes.btn}
-              color="primary"
-              variant="contained"
-            >Continue</Button>
-        </React.Fragment>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              margin="normal"
+              id="date-picker-dialog"
+              label="Date picker dialog"
+              format="dd/MM/yyyy"
+              placeholder="dd/MM/yyyy"
+              onChange={this.handleChangeDate}
+              KeyboardButtonProps={{
+                "aria-label": "change date"
+              }}
+            />
+          </MuiPickersUtilsProvider>
+          <br />
+          <TextField placeholder="Address" label="Address" type="address" />
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Gender</FormLabel>
+            <RadioGroup
+              aria-label="gender"
+              name="gender1"
+              onChange={this.handleChange2}
+            >
+              <FormControlLabel
+                value="female"
+                control={<Radio color="primary" />}
+                label="Female"
+              />
+              <FormControlLabel
+                value="male"
+                control={<Radio color="primary" />}
+                label="Male"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+        <Button color="primary" variant="contained" onClick={this.handleClick}>
+          Continue
+        </Button>
+      </React.Fragment>
     );
   }
+}
 
-
+const mapDispatchToProps = dispatch => {
+  return {
+    addCEmp: data => {
+      dispatch(addControlEmp(data));
+    }
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(Addcontrolemp);

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const LogIN = data => {
   return (dispatch, getState) => {
-    // console.log(data);
+    console.log();
     axios
       .post("https://lit-peak-11555.herokuapp.com/LOGIN", data)
       .then(res => {

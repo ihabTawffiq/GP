@@ -29,8 +29,8 @@ class App extends Component {
   state = {};
 
   render() {
-    console.log(this.props.token);
     const decode = this.props.token ? Decode(this.props.token) : null;
+    console.log(decode);
 
     return (
       <div>

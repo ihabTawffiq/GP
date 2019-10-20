@@ -15,7 +15,7 @@ class Login extends Component {
     });
   };
   handleclick = () => {
-this.props.Login(this.state)
+    this.props.Login(this.state);
     // console.log(this.state);
   };
   render() {
