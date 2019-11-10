@@ -1,0 +1,105 @@
+body{
+    background-image:url(img/13.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+a{
+    color: white;
+    margin: 5px;
+}
+a:hover{
+    color: white;
+    transform: rotate(10deg);
+}
+.nav{
+    background-color: rgb(20, 21, 36);
+}
+.form-container{
+    width: 35%;
+    margin: 90px auto;
+    background-color: rgba(255,255,255,0.8);
+    border-top:4px solid rgb(20, 21, 36) ;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-bottom: 3px solid;
+}
+.addTeacherh2{
+   display: flex;
+   justify-content: space-around;
+   font-size: 1.5rem;
+   font-weight: bold;
+}
+
+.inputIT{
+    width: 80% ;
+    font-weight: bold;
+    margin: 0 auto;
+    
+}
+.inputIT input{
+    width: 100% ;
+    border: 0;
+    border-bottom: 1px solid black;
+    line-height: 30px;
+    margin: 10px;
+    background-color: rgba(0,0,0,0);
+    font-size: 1.5rem;
+    font-family: cursive;
+    color: black;
+    
+
+
+}
+input:focus , select:focus{
+    outline: 0;
+}
+.inputIT select{
+    width:100%;
+    height:30px;
+    border: 0;
+    border-bottom: 1px solid black;
+    line-height: 30px;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0);
+    margin: 10px;
+    font-size: 1.5rem;
+    font-family: cursive;
+    color: black;
+    
+}
+.inputIT .data
+{
+    width: 80%;
+}
+
+::placeholder {
+    font-size: 1.5rem;
+    font-family: cursive;
+    color: black;
+  }
+input[type="submit"]{
+    display: flex;
+    justify-content: space-around;
+    margin: 10% 20%;
+    width: 50%;
+    height: 30px;
+    border-radius: 200px ;
+    background-color: rgb(20, 21, 36);
+    font-size: 25px;
+    color: whitesmoke;
+
+}
+input[type="submit"]:hover{
+    background-color: #039be5;
+    transition: all 2s;
+}
+@media (max-width:780px){
+    .form-container{
+        width:80%;
+    }
+   
+
+}
