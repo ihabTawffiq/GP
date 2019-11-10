@@ -52,7 +52,7 @@ class Addworkersaffair extends Component {
     return (
       <div className="form-container" >
       <form>
-        <h2 className='addTeacherh2'>Add Teacher</h2>
+        <h2 className='addTeacherh2'>Add Worker</h2>
         <div className="inputIT" >
           <input type="text" name="firstname" onChange={this.handleChange} id="first_name" placeholder="Firstname"/>
         </div>
@@ -81,7 +81,7 @@ class Addworkersaffair extends Component {
       <MuiPickersUtilsProvider className="data" utils={DateFnsUtils}>
           <Grid container justify="space-around" className="data">
           <KeyboardDatePicker
-            placeholder="dd/mm/yyyy"
+            placeholder="DD/MM/YYYY"
             margin="normal"
             id="date-picker-dialog"
             format="dd/MM/yyyy"

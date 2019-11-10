@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { LogIN } from "../store/actions/authaction";
-import './login.css'
 class Login extends Component {
   state = {
     email: "",
@@ -18,8 +17,7 @@ class Login extends Component {
   handleclick = (e) => {
     e.preventDefault();
     this.props.Login(this.state);
-
-    console.log(this.state);
+    // console.log(this.state);
   };
   render() {
     return (

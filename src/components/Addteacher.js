@@ -67,7 +67,7 @@ export default function Addteacher () {
             <div className='inputIT'>
              
               <select>
-                <option>--Select--</option>
+                  
                   <option>Primmary School</option>
                   <option>Secondery School</option>
                 </select>

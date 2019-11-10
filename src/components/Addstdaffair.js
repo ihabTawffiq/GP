@@ -45,7 +45,6 @@ export default function Addstdaffairs () {
            </div>
            <div className="inputIT" >
            <select>
-            <option>--Select--</option>
              <option>Male</option>
              <option>Female</option>
            </select>
@@ -67,7 +66,7 @@ export default function Addstdaffairs () {
        <MuiPickersUtilsProvider className="data" utils={DateFnsUtils}>
      <Grid container justify="space-around" className="data">
      <KeyboardDatePicker
-      placeholder= 'dd/mm/yyyy'
+     
        margin="normal"
        id="date-picker-dialog"
        format="MM/dd/yyyy"

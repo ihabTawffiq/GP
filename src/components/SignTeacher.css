@@ -1,22 +1,32 @@
 body{
-    background-image:url(img/13.jpg);
+    background-image:url(img/6.jpg);
     background-size: cover;
-    background-position: center;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 800px;
 }
-a{
-    color: white;
-    margin: 5px;
-}
-a:hover{
-    color: white;
-    transform: rotate(10deg);
-}
+
 .nav{
     background-color: rgb(20, 21, 36);
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top:0;
+   }
+
+.nav-link{
+    color: white;
+    margin: 10px;
+    font-size: 15px;
+    display:inline-flex;
+
 }
+.nav-link:hover{
+    
+    color: white;
+    transform: rotate(-15deg);
+}
+
+
 .form-container{
     width: 35%;
     margin: 90px auto;
@@ -49,12 +59,6 @@ a:hover{
     font-size: 1.5rem;
     font-family: cursive;
     color: black;
-    
-
-
-}
-input:focus , select:focus{
-    outline: 0;
 }
 .inputIT select{
     width:100%;
@@ -70,6 +74,11 @@ input:focus , select:focus{
     color: black;
     
 }
+
+input:focus , select:focus{
+    outline: 0;
+}
+
 .inputIT .data
 {
     width: 80%;
@@ -83,7 +92,7 @@ input:focus , select:focus{
 input[type="submit"]{
     display: flex;
     justify-content: space-around;
-    margin: 10% 20%;
+    margin: 10% 25%;
     width: 50%;
     height: 30px;
     border-radius: 200px ;
@@ -96,10 +105,12 @@ input[type="submit"]:hover{
     background-color: #039be5;
     transition: all 2s;
 }
+.active{
+    background-color: aquamarine ;
+}
 @media (max-width:780px){
     .form-container{
         width:80%;
     }
-   
 
 }

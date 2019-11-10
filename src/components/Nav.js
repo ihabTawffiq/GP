@@ -1,33 +1,32 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { LogOut } from "../store/actions/authaction";
+import './SignTeacher.css';
 
 
 function ButtonAppBar(props) {
 
   return (
     <div >
-            <AppBar position="static">
-              <Toolbar className="nav">
-          <Link to="/login">Login</Link>
-          <Link to="#!"  onClick={() => {
+      <div className="nav">
+          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="#!" className="nav-link" onClick={() => {
                 props.signOut();
               }}>
               LogOut
           </Link>
-          <Link to="/home">Home</Link>
-          <Link to="/addteacher">Addteacher</Link>
-          <Link to="/addstudentaffairs">Addstd</Link>
-          <Link to="/addcontrolemp">Addcontrolemp</Link>
-          <Link to="/addworkersaffair">Addworkersaffair</Link>
-          </Toolbar>
-          </AppBar>
+          <Link to="/home" className="nav-link">Home</Link>
+          <Link to="/addteacher" className="nav-link">Addteacher</Link>
+          <Link to="/addstudentaffairs" className="nav-link">Addstd</Link>
+          <Link to="/addcontrolemp" className="nav-link">Addcontrolemp</Link>
+          <Link to="/addworkersaffair" className="nav-link">Addworkersaffair</Link>
+          </div>
     </div>
   );
 }
+
+
 
 const mapDispatchToProps = dispatch => {
   return {
